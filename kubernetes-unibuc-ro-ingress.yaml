@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubernetes-unibuc-ro-ingress
+  annotations:
+    # Use certificates issued by Let's Encrypt staging environment
+    cert-manager.io/issuer: letsencrypt-production
+    # Use oauth2-proxy to require authentication
+    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+spec:
+  tls:
+  - hosts:
+    - kubernetes.unibuc.ro
+    secretName: kubernetes-unibuc-ro-tls
+  rules:
+  - host: kubernetes.unibuc.ro
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hello-kubernetes
+            port:
+              number: 80
