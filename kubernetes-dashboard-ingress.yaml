@@ -10,7 +10,6 @@ metadata:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       auth_request_set $token $upstream_http_authorization;
       proxy_set_header Authorization $token;
-      add_header X-token "$token";
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   tls:
