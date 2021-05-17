@@ -1,6 +1,6 @@
 # Certificate issuer using the Let's Encrypt staging environment
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: letsencrypt-staging
 spec:
@@ -11,7 +11,7 @@ spec:
     email: gabriel.majeri@unibuc.ro
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
-      name: letsencrypt-staging
+      name: letsencrypt-staging-account-key
     # Enable the HTTP-01 challenge provider
     solvers:
     - http01:
