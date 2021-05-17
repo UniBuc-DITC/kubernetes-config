@@ -1,0 +1,5 @@
+authProxy:
+  # Use OpenID Connect for authentication
+  enabled: true
+  # Use the existing oauth2-proxy
+  external: true

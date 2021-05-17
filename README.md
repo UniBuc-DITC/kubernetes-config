@@ -32,3 +32,4 @@ Authentication is available through the MS365 accounts. The Kubernetes API serve
 
 - [oauth2-proxy](https://github.com/oauth2-proxy/oauth2-proxy) is used to protect the admin site
 - [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is accessible at https://kubernetes.unibuc.ro/dashboard/
+- [kubeapps](https://kubeapps.com/) is accessible at https://kubernetes.unibuc.ro/apps/
