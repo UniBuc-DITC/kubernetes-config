@@ -28,7 +28,7 @@ UniBuc runs its Kubernetes cluster using [Microk8s](https://microk8s.io/) on the
 
 IT admins can access everything they need at https://kubernetes.unibuc.ro/
 
-Authentication is available through the MS365 accounts. The Kubernetes API server is configured to accept [OpenID Connect Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens) issued by Azure AD.
+Authentication is available through the MS365 accounts. The Kubernetes API server is configured to accept [OpenID Connect Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens) issued by Azure AD. The user's groups are configured through [Azure AD app roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 
 - [oauth2-proxy](https://github.com/oauth2-proxy/oauth2-proxy) is used to protect the admin site
 - [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is accessible at https://kubernetes.unibuc.ro/dashboard/
