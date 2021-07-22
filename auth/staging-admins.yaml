@@ -1,0 +1,26 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: staging-admins
+  namespace: staging
+subjects:
+  - kind: Group
+    name: azuread:Staging.Admin
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: admin
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: staging-admins-view-namespaces
+subjects:
+  - kind: Group
+    name: azuread:Staging.Admin
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: namespace-viewer
+  apiGroup: rbac.authorization.k8s.io
