@@ -19,6 +19,10 @@ redis:
   # Use the pre-generated password
   existingSecret: "ms365-oauth2-proxy-redis-password"
   existingSecretPasswordKey: "redis-password"
+  master:
+    persistence:
+      # We don't mind logging in everyone again if anything happens
+      enabled: false
 extraArgs:
   provider: azure
   azure-tenant: "08a1a72f-fecd-4dae-8cec-471a2fb7c2f1"
