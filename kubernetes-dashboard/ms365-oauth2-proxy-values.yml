@@ -27,3 +27,4 @@ extraArgs:
   provider: azure
   azure-tenant: "08a1a72f-fecd-4dae-8cec-471a2fb7c2f1"
   set-authorization-header: true
+  cookie-refresh: 1h
