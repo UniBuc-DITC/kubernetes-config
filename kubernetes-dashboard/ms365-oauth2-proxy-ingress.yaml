@@ -3,21 +3,19 @@ kind: Ingress
 metadata:
   name: ms365-oauth2-ingress
   namespace: kubernetes-dashboard
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-buffer-size: "8k"
 spec:
   tls:
-  - hosts:
-    - kubernetes.unibuc.ro
-    secretName: kubernetes-unibuc-ro-tls
+    - hosts:
+        - kubernetes.unibuc.ro
+      secretName: kubernetes-unibuc-ro-tls
   rules:
-  - host: kubernetes.unibuc.ro
-    http:
-      paths:
-      - path: /oauth2
-        pathType: Prefix
-        backend:
-          service:
-            name: ms365-oauth2-proxy
-            port:
-              number: 80
+    - host: kubernetes.unibuc.ro
+      http:
+        paths:
+          - path: /oauth2
+            pathType: Prefix
+            backend:
+              service:
+                name: ms365-oauth2-proxy
+                port:
+                  number: 80

@@ -20,10 +20,11 @@ UniBuc runs its Kubernetes cluster using [Microk8s](https://microk8s.io/) on the
 - [Metrics Server](https://github.com/kubernetes-sigs/metrics-server)
 - [CoreDNS](https://coredns.io/)
 
-## Additional controllers
+## Additional controllers and operators
 
 - [NGINX Ingress Controller](https://github.com/kubernetes/ingress-nginx)
 - [cert-manager](https://cert-manager.io/) for automatic TLS certificate management
+- [Kubernetes secret generator](https://github.com/mittwald/kubernetes-secret-generator)
 
 ## Admin site
 

@@ -15,17 +15,17 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   tls:
-  - hosts:
-    - kubernetes.unibuc.ro
-    secretName: kubernetes-unibuc-ro-tls
+    - hosts:
+        - kubernetes.unibuc.ro
+      secretName: kubernetes-unibuc-ro-tls
   rules:
-  - host: kubernetes.unibuc.ro
-    http:
-      paths:
-      - path: /dashboard(/|$)(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: kubernetes-dashboard
-            port:
-              name: https
+    - host: kubernetes.unibuc.ro
+      http:
+        paths:
+          - path: /dashboard(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: kubernetes-dashboard
+                port:
+                  name: https
