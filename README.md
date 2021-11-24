@@ -41,3 +41,19 @@ Authentication is available through the MS365 accounts. The Kubernetes API serve
 - [oauth2-proxy](https://github.com/oauth2-proxy/oauth2-proxy) is used to protect the admin site
 - [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is accessible at https://kubernetes.unibuc.ro/dashboard/
 - [kubeapps](https://kubeapps.com/) is accessible at https://kubernetes.unibuc.ro/apps/
+
+## Additional Microk8s configuration
+
+To allow the Kubernetes API server to validate access tokens issued by Azure AD, the API server daemon is configured with the following additional parameters:
+
+```sh
+# Enable authentication with Azure AD
+--oidc-issuer-url=https://sts.windows.net/08a1a72f-fecd-4dae-8cec-471a2fb7c2f1/
+--oidc-client-id=da028dbe-ac85-4fbf-9288-0f8353bfa757
+--oidc-username-claim=sub
+--oidc-username-prefix=azuread:
+--oidc-groups-claim=roles
+--oidc-groups-prefix=azuread:
+```
+
+These have been added in the `/var/snap/microk8s/current/args/kube-apiserver` file, as indicated by the Microk8s documentation on [how to configure the internal K8s services](https://microk8s.io/docs/configuring-services).
