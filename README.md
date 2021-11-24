@@ -10,8 +10,14 @@ UniBuc runs its Kubernetes cluster using [Microk8s](https://microk8s.io/) on the
 
 ## Recommended tools
 
+You should install the tools below if you plan to manage/work with K8s.
+
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) for cluster administration
-  - For AAD authentication, you will have to install the Azure [kubelogin](https://github.com/Azure/kubelogin) tool, and then use/adapt the [sample Kubeconfig file](kubeconfig).
+  - Follow the instructions on [this page](https://kubernetes.io/docs/tasks/tools/) for installing `kubectl` on your platform.
+- [kubelogin](https://github.com/Azure/kubelogin) for AAD authentication
+  - You can use a [binary release](https://github.com/Azure/kubelogin/releases), for example.
+  - Adapt the [sample Kubeconfig file](kubeconfig) to your needs. You can either put it in the `$HOME/.kube/` directory
+  - Upon first connecting to the cluster, the tool will ask you to open a link in the browser and log into MS365.
 - [Helm](https://helm.sh/) for easy package installation
 
 ## Enabled K8s plugins
