@@ -15,6 +15,8 @@ We will use the [Uncomplicated Firewall (UFW)](https://wiki.ubuntu.com/Uncomplic
 The full list of ports which Microk8s uses are available [here](https://microk8s.io/docs/services-and-ports). For our purposes it's enough to allow communication on the following two ports for all machines on the internal UB network:
 
 ```sh
+ufw allow from 10.0.0.0/8 to any port 10250
+ufw allow from 10.0.0.0/8 to any port 10255
 ufw allow from 10.0.0.0/8 to any port 16443
 ufw allow from 10.0.0.0/8 to any port 19001
 ufw allow from 10.0.0.0/8 to any port 25000
