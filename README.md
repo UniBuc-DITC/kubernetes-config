@@ -1,12 +1,12 @@
 # Kubernetes configuration files
 
-According to the Kubernetes [Configuration Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/#general-configuration-tips), config files should be versioned controlled before being deployed. This simplifies rolling back config changes and provides greater transparency into the cluster's organisation.
+This repository contains the general configuration files for the University of Bucharest's [Kubernetes](https://kubernetes.io/) cluster. We only keep global, cluster-wide config files here; project-specific configs are in their respective repositories.
 
-This repository contains the generic, cluster-wide configuration settings. Project-specific config files are in their respective repositories.
+According to the Kubernetes [Configuration Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/#general-configuration-tips), config files should be versioned controlled before being deployed. This simplifies rolling back config changes and provides greater transparency into the cluster's organisation.
 
 ## Existing setup
 
-UniBuc runs its Kubernetes cluster using [Microk8s](https://microk8s.io/) on the existing virtual machine-based infrastructure.
+UniBuc runs its Kubernetes cluster using [Microk8s](https://microk8s.io/) on the existing virtual machine-based infrastructure. See the [node setup documentation](SETUP.md) for information on how the individual nodes are configured.
 
 ## Recommended tools
 
@@ -41,19 +41,3 @@ Authentication is available through the MS365 accounts. The Kubernetes API serve
 - [oauth2-proxy](https://github.com/oauth2-proxy/oauth2-proxy) is used to protect the admin site
 - [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is accessible at https://kubernetes.unibuc.ro/dashboard/
 - [kubeapps](https://kubeapps.com/) is accessible at https://kubernetes.unibuc.ro/apps/
-
-## Additional Microk8s configuration
-
-To allow the Kubernetes API server to validate access tokens issued by Azure AD, the API server daemon is configured with the following additional parameters:
-
-```sh
-# Enable authentication with Azure AD
---oidc-issuer-url=https://sts.windows.net/08a1a72f-fecd-4dae-8cec-471a2fb7c2f1/
---oidc-client-id=da028dbe-ac85-4fbf-9288-0f8353bfa757
---oidc-username-claim=sub
---oidc-username-prefix=azuread:
---oidc-groups-claim=roles
---oidc-groups-prefix=azuread:
-```
-
-These have been added in the `/var/snap/microk8s/current/args/kube-apiserver` file, as indicated by the Microk8s documentation on [how to configure the internal K8s services](https://microk8s.io/docs/configuring-services).
