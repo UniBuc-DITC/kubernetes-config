@@ -4,6 +4,10 @@ This document describes the steps which have to be taken when preparing a new no
 
 For simplicity and consistency, all of our Kubernetes machines should run the latest LTS version of [Ubuntu Server](https://ubuntu.com/), with all updates installed.
 
+## Swap space configuration
+
+As [recommended by Kubernetes best practices](https://serverfault.com/a/881518/957097), we [disable swap](https://askubuntu.com/questions/214805/how-do-i-disable-swap) and remove the swap file on all machines which also run pods, to ensure consistent performance.
+
 ## Firewall configuration
 
 We will use the [Uncomplicated Firewall (UFW)](https://wiki.ubuntu.com/UncomplicatedFirewall) for network protection. It has to be [configured](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04) to allow communication between the node's control planes.
