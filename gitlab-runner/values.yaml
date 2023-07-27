@@ -1,0 +1,30 @@
+# The GitLab Server URL (with protocol) to register the runner against.
+# Reference: https://docs.gitlab.com/runner/commands/index.html#gitlab-runner-register
+gitlabUrl: https://gitlab.com/
+
+runners:
+  # The name of the secret containing runner-token and runner-registration-token
+  secret: gitlab-runner-secret
+
+  # Run all containers with the privileged flag enabled
+  # This will allow the docker:stable-dind image to run if you need to run Docker
+  # commands. Please read the docs before turning this on:
+  # ref: https://docs.gitlab.com/runner/executors/kubernetes.html#using-docker-dind
+  privileged: true
+
+  # Runner configuration, where the multi line string is evaluated as
+  # template so you can specify helm values inside of it.
+  #
+  # tpl: https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-tpl-function
+  # runner configuration: https://docs.gitlab.com/runner/configuration/advanced-configuration.html
+  config: |
+    [[runners]]
+      [runners.kubernetes]
+        namespace = "{{.Release.Namespace}}"
+        image = "alpine:latest"
+        pull_policy = "if-not-present"
+        privileged = true
+      [[runners.kubernetes.volumes.empty_dir]]
+        name = "docker-certs"
+        mount_path = "/certs/client"
+        medium = "Memory"
