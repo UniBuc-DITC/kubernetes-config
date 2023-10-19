@@ -22,7 +22,7 @@ ufw allow from 10.0.0.0/8 to any port 19001
 ufw allow from 10.0.0.0/8 to any port 25000
 ```
 
-(the ports are secured )
+(the ports are [secured](https://microk8s.io/docs/services-and-ports) by default)
 
 ### Azure AD authentication
 
