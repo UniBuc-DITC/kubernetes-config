@@ -1,0 +1,11 @@
+apiVersion: projectcalico.org/v3
+kind: BGPPeer
+metadata:
+  name: sinaia-tor
+spec:
+  peerIP: 172.20.241.142
+  asNumber: 64559
+  password:
+    secretKeyRef:
+      name: bgp-secrets
+      key: bgp-password

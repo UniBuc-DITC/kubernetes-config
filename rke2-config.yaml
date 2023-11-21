@@ -1,0 +1,10 @@
+# /etc/rancher/rke2/config.yaml
+server: https://kubernetes.unibuc.ro:9345
+# Token for joining other nodes.
+token: <REDACTED>
+tls-san:
+  # This hostname is configured using a round-robin DNS configuration
+  # to load-balance access to the three control plane nodes.
+  - kubernetes.unibuc.ro
+# Use Calico for network management.
+cni: calico
