@@ -6,7 +6,7 @@ According to the Kubernetes [Configuration Best Practices](https://kubernetes.io
 
 ## Existing setup
 
-UniBuc runs its Kubernetes cluster using [Microk8s](https://microk8s.io/) on the existing virtual machine-based infrastructure. See the [node setup documentation](SETUP.md) for information on how the individual nodes are configured.
+UniBuc runs its Kubernetes cluster using [RKE2](https://docs.rke2.io/) on the existing virtual machine-based infrastructure. See the [node setup documentation](SETUP.md) for information on how the individual nodes are configured.
 
 ## Recommended tools
 

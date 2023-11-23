@@ -1,7 +1,8 @@
 # /etc/rancher/rke2/config.yaml
+# Load-balanced endpoint for the RKE2 cluster.
 server: https://kubernetes.unibuc.ro:9345
 # Token for joining other nodes.
-token: <REDACTED>
+token: <cluster-join-token>
 tls-san:
   # This hostname is configured using a round-robin DNS configuration
   # to load-balance access to the three control plane nodes.
