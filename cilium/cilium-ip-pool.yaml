@@ -4,4 +4,4 @@ metadata:
   name: sinaia-ip-pool
 spec:
   cidrs:
-  - cidr: "10.45.250.248/30"
+    - cidr: "10.45.250.0/24"

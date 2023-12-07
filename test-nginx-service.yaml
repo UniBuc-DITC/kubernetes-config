@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: cilium-bgp-test-service
   annotations:
-    "io.cilium/lb-ipam-ips": "10.45.250.250"
+    "io.cilium/lb-ipam-ips": "10.45.250.100,10.45.250.101,10.45.250.102,10.45.250.103"
 spec:
   type: LoadBalancer
   ports:
-  - port: 80
+    - port: 80
   selector:
     app: nginx
