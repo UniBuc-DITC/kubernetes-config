@@ -5,7 +5,7 @@ metadata:
   namespace: staging
 subjects:
   - kind: Group
-    name: azuread:Staging.Admin
+    name: entra:Staging.Admin
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
@@ -18,7 +18,7 @@ metadata:
   name: staging-admins-view-namespaces
 subjects:
   - kind: Group
-    name: azuread:Staging.Admin
+    name: entra:Staging.Admin
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole

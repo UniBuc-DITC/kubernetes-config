@@ -36,21 +36,3 @@ ufw allow from 10.0.0.0/8 proto tcp to any port 10250
 
 ```
 -->
-
-<!-- TODO: need to update this for RKE2
-### Azure AD authentication
-
-To allow the Kubernetes API server to validate access tokens issued by Azure AD, the API server daemon needs to be configured with the following additional parameters:
-
-```sh
-# Enable authentication with Azure AD
---oidc-issuer-url=https://sts.windows.net/08a1a72f-fecd-4dae-8cec-471a2fb7c2f1/
---oidc-client-id=da028dbe-ac85-4fbf-9288-0f8353bfa757
---oidc-username-claim=sub
---oidc-username-prefix=azuread:
---oidc-groups-claim=roles
---oidc-groups-prefix=azuread:
-```
-
-These have been added in the `/var/snap/microk8s/current/args/kube-apiserver` file, as indicated by the Microk8s documentation on [how to configure the internal K8s services](https://microk8s.io/docs/configuring-services).
--->

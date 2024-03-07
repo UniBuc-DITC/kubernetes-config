@@ -9,3 +9,13 @@ tls-san:
   - kubernetes.unibuc.ro
 # Use Calico for network management.
 cni: calico
+# Additional flags for the `kube-apiserver` process
+kube-apiserver-arg:
+  # Add support for authentication using Microsoft Entra ID.
+  # Based on https://kubernetes.io/docs/reference/access-authn-authz/authentication/#configuring-the-api-server
+  - "oidc-issuer-url=https://sts.windows.net/08a1a72f-fecd-4dae-8cec-471a2fb7c2f1/"
+  - "oidc-client-id=da028dbe-ac85-4fbf-9288-0f8353bfa757"
+  - "oidc-username-claim=sub"
+  - "oidc-username-prefix=entra:"
+  - "oidc-groups-claim=roles"
+  - "oidc-groups-prefix=entra:"
