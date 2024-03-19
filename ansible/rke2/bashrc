@@ -1,0 +1,8 @@
+# Add RKE2 tools to `PATH`
+export PATH="/var/lib/rancher/rke2/bin/:$PATH"
+
+# Make the `kubectl` command work
+export KUBECONFIG='/etc/rancher/rke2/rke2.yaml'
+
+# Make the `crictl` command work
+export CRI_CONFIG_FILE='/var/lib/rancher/rke2/agent/etc/crictl.yaml'
