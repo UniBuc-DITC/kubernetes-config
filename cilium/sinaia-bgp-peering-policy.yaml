@@ -1,12 +1,12 @@
 apiVersion: "cilium.io/v2alpha1"
 kind: CiliumBGPPeeringPolicy
 metadata:
-  name: bgp-peering-policy
+  name: sinaia-bgp-peering-policy
 spec:
-  # TODO: should only apply to Sinaia nodes
-  #  nodeSelector:
-  #    matchLabels:
-  #      bgp-policy: a
+  # This BGP peering policy is only for the Sinaia nodes.
+  nodeSelector:
+    matchLabels:
+      topology.kubernetes.io/region: ro-sinaia-1
   virtualRouters:
     - localASN: 64559
       neighbors:
@@ -15,4 +15,4 @@ spec:
       serviceSelector:
         matchExpressions:
           # We want to ensure all of our services which request load balancers get exported
-          - {key: inexistent, operator: NotIn, values: ['never-used-value']}
+          - { key: inexistent, operator: NotIn, values: ["never-used-value"] }

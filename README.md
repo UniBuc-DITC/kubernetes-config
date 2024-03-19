@@ -19,6 +19,7 @@ You should install the tools below if you plan to manage/work with K8s.
   - Adapt the [sample Kubeconfig file](kubeconfig) to your needs. You can either put it in the `$HOME/.kube/` directory
   - Upon first connecting to the cluster, the tool will ask you to open a link in the browser and log into MS365.
 - [Helm](https://helm.sh/) for easy package installation
+- [Cilium CLI](https://github.com/cilium/cilium-cli) if you need to manage Cilium
 
 ## Enabled K8s plugins
 
