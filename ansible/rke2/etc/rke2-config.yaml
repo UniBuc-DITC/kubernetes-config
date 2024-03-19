@@ -7,6 +7,10 @@ tls-san:
   # This hostname is configured using a round-robin DNS configuration
   # to load-balance access to the three control plane nodes.
   - kubernetes.unibuc.ro
+node-label:
+  # TODO: set this appropriately based on geographical location of node being configured
+  # - "topology.kubernetes.io/region=ro-sinaia-1"
+  # - "topology.kubernetes.io/zone=ro-sinaia-1a"
 # Use Calico for network management.
 cni: calico
 # Additional flags for the `kube-apiserver` process
