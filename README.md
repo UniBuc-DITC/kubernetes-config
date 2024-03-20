@@ -31,14 +31,18 @@ You should install the tools below if you plan to manage/work with K8s.
 
 - [NGINX Ingress Controller](https://github.com/kubernetes/ingress-nginx)
 - [cert-manager](https://cert-manager.io/) for automatic TLS certificate management
-- [Kubernetes secret generator](https://github.com/mittwald/kubernetes-secret-generator)
+<!-- - [Kubernetes secret generator](https://github.com/mittwald/kubernetes-secret-generator) -->
 
 ## Admin site
 
+<!-- TODO: make it available at that address again
 IT admins can access everything they need at https://kubernetes.unibuc.ro/
+-->
 
 Authentication is available through the MS365 accounts. The Kubernetes API server is configured to accept [OpenID Connect Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens) issued by Azure AD. The user's groups are configured through [Azure AD app roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 
+<!-- TODO: reconfigure on new deployment
 - [oauth2-proxy](https://github.com/oauth2-proxy/oauth2-proxy) is used to protect the admin site
 - [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is accessible at https://kubernetes.unibuc.ro/dashboard/
 - [kubeapps](https://kubeapps.com/) is accessible at https://kubernetes.unibuc.ro/apps/
+-->
