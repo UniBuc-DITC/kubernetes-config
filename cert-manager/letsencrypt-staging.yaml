@@ -14,7 +14,7 @@ spec:
       name: letsencrypt-staging-account-key
     # Enable the HTTP-01 challenge provider
     solvers:
-    - http01:
-        ingress:
-          # The microk8s' NGINX ingress controller class is `public`
-          class: public
+      - http01:
+          ingress:
+            # TODO: should also add one ingress class and issuer for Bucharest DC
+            ingressClassName: nginx-sinaia

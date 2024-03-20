@@ -6,7 +6,7 @@ According to the Kubernetes [Configuration Best Practices](https://kubernetes.io
 
 ## Existing setup
 
-UniBuc runs its Kubernetes cluster using [Microk8s](https://microk8s.io/) on the existing virtual machine-based infrastructure. See the [node setup documentation](SETUP.md) for information on how the individual nodes are configured.
+UniBuc runs its Kubernetes cluster using [RKE2](https://docs.rke2.io/) on the existing virtual machine-based infrastructure. See the [node setup documentation](SETUP.md) for information on how the individual nodes are configured.
 
 ## Recommended tools
 
@@ -19,6 +19,7 @@ You should install the tools below if you plan to manage/work with K8s.
   - Adapt the [sample Kubeconfig file](kubeconfig) to your needs. You can either put it in the `$HOME/.kube/` directory
   - Upon first connecting to the cluster, the tool will ask you to open a link in the browser and log into MS365.
 - [Helm](https://helm.sh/) for easy package installation
+- [Cilium CLI](https://github.com/cilium/cilium-cli) if you need to manage Cilium
 
 ## Enabled K8s plugins
 
@@ -30,14 +31,18 @@ You should install the tools below if you plan to manage/work with K8s.
 
 - [NGINX Ingress Controller](https://github.com/kubernetes/ingress-nginx)
 - [cert-manager](https://cert-manager.io/) for automatic TLS certificate management
-- [Kubernetes secret generator](https://github.com/mittwald/kubernetes-secret-generator)
+<!-- - [Kubernetes secret generator](https://github.com/mittwald/kubernetes-secret-generator) -->
 
 ## Admin site
 
+<!-- TODO: make it available at that address again
 IT admins can access everything they need at https://kubernetes.unibuc.ro/
+-->
 
 Authentication is available through the MS365 accounts. The Kubernetes API server is configured to accept [OpenID Connect Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens) issued by Azure AD. The user's groups are configured through [Azure AD app roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 
+<!-- TODO: reconfigure on new deployment
 - [oauth2-proxy](https://github.com/oauth2-proxy/oauth2-proxy) is used to protect the admin site
 - [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is accessible at https://kubernetes.unibuc.ro/dashboard/
 - [kubeapps](https://kubeapps.com/) is accessible at https://kubernetes.unibuc.ro/apps/
+-->

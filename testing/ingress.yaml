@@ -1,0 +1,69 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sinaia-test-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+spec:
+  ingressClassName: nginx-sinaia
+  tls:
+    - hosts:
+        - sinaia1.kubernetes.unibuc.ro
+        - sinaia2.kubernetes.unibuc.ro
+        - sinaia3.kubernetes.unibuc.ro
+      secretName: sinaia-kubernetes-tls
+  rules:
+    - host: "sinaia1.kubernetes.unibuc.ro"
+      http:
+        paths:
+          - backend:
+              service:
+                name: helloworld-http-test-service
+                port:
+                  name: http
+            path: /hello(/|$)(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: nginx-test-service
+                port:
+                  name: http
+            path: /
+            pathType: Prefix
+    - host: "sinaia2.kubernetes.unibuc.ro"
+      http:
+        paths:
+          - backend:
+              service:
+                name: helloworld-http-test-service
+                port:
+                  name: http
+            path: /hello(/|$)(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: nginx-test-service
+                port:
+                  name: http
+            path: /
+            pathType: Prefix
+    - host: "sinaia3.kubernetes.unibuc.ro"
+      http:
+        paths:
+          - backend:
+              service:
+                name: helloworld-http-test-service
+                port:
+                  name: http
+            path: /hello(/|$)(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: nginx-test-service
+                port:
+                  name: http
+            path: /
+            pathType: Prefix

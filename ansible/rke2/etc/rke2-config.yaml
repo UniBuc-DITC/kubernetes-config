@@ -1,0 +1,26 @@
+# /etc/rancher/rke2/config.yaml
+# Load-balanced endpoint for the RKE2 cluster.
+server: https://kubernetes.unibuc.ro:9345
+# Token for joining other nodes.
+token: <cluster-join-token>
+tls-san:
+  # This hostname is configured using a round-robin DNS configuration
+  # to load-balance access to the three control plane nodes.
+  - kubernetes.unibuc.ro
+node-label:
+  # TODO: set this appropriately based on geographical location of node being configured
+  # - "topology.kubernetes.io/region=ro-sinaia-1"
+  # - "topology.kubernetes.io/zone=ro-sinaia-1a"
+# Use Cilium for network management.
+cni: cilium
+disable: rke2-ingress-nginx
+# Additional flags for the `kube-apiserver` process
+kube-apiserver-arg:
+  # Add support for authentication using Microsoft Entra ID.
+  # Based on https://kubernetes.io/docs/reference/access-authn-authz/authentication/#configuring-the-api-server
+  - "oidc-issuer-url=https://sts.windows.net/08a1a72f-fecd-4dae-8cec-471a2fb7c2f1/"
+  - "oidc-client-id=da028dbe-ac85-4fbf-9288-0f8353bfa757"
+  - "oidc-username-claim=sub"
+  - "oidc-username-prefix=entra:"
+  - "oidc-groups-claim=roles"
+  - "oidc-groups-prefix=entra:"

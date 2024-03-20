@@ -1,11 +1,13 @@
+# This cluster role binding assigns the `cluster-admin` Kubernetes role
+# to users who have the "Cluster Administrator" Azure app role.
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: global-admins
+  name: cluster-admins
 subjects:
-- kind: Group
-  name: azuread:Cluster.Admin
-  apiGroup: rbac.authorization.k8s.io
+  - kind: Group
+    name: entra:Cluster.Admin
+    apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
   name: cluster-admin

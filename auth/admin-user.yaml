@@ -1,0 +1,23 @@
+# Service Account for a cluster admin user
+# TODO: remove this once we have Ingress controller + Microsoft 365 authentication
+# set up for Kubernetes Dashboard.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: default
+---
+# Appropriate (cluster) role binding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: admin-user
+    namespace: default

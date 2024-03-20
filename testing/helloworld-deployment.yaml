@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-http-test
+spec:
+  selector:
+    matchLabels:
+      app: helloworld-http
+  replicas: 6
+  template:
+    metadata:
+      labels:
+        app: helloworld-http
+    spec:
+      containers:
+        - name: helloworld-http
+          image: strm/helloworld-http
+          ports:
+            - containerPort: 80

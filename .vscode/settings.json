@@ -1,0 +1,6 @@
+{
+  // Re-run formatter before saving.
+  "editor.formatOnSave": true,
+  // Use Prettier to format everything.
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
