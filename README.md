@@ -1,6 +1,6 @@
 # Kubernetes configuration files
 
-This repository contains the general configuration files for the University of Bucharest's [Kubernetes](https://kubernetes.io/) cluster. We only keep global, cluster-wide config files here; project-specific configs are in their respective repositories.
+This repository contains the general configuration files for the University of Bucharest's _experimental_ [Kubernetes](https://kubernetes.io/) cluster. We only keep global, cluster-wide config files here; project-specific configs are in their respective repositories.
 
 According to the Kubernetes [Configuration Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/#general-configuration-tips), config files should be versioned controlled before being deployed. This simplifies rolling back config changes and provides greater transparency into the cluster's organisation.
 
