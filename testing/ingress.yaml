@@ -24,7 +24,14 @@ spec:
                 name: helloworld-http-test-service
                 port:
                   name: http
-            path: /hello(/|$)(.*)
+            path: /load-balance(/|$)(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: stateful-nginx-test-service
+                port:
+                  name: http
+            path: /stateful(/|$)(.*)
             pathType: ImplementationSpecific
           - backend:
               service:
@@ -45,6 +52,13 @@ spec:
             pathType: ImplementationSpecific
           - backend:
               service:
+                name: stateful-nginx-test-service
+                port:
+                  name: http
+            path: /stateful(/|$)(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
                 name: nginx-test-service
                 port:
                   name: http
@@ -59,6 +73,13 @@ spec:
                 port:
                   name: http
             path: /hello(/|$)(.*)
+            pathType: ImplementationSpecific
+          - backend:
+              service:
+                name: stateful-nginx-test-service
+                port:
+                  name: http
+            path: /stateful(/|$)(.*)
             pathType: ImplementationSpecific
           - backend:
               service:
