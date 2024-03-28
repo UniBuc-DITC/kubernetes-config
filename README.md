@@ -33,6 +33,8 @@ You should install the tools below if you plan to manage/work with K8s.
 - [cert-manager](https://cert-manager.io/) for automatic TLS certificate management
 <!-- - [Kubernetes secret generator](https://github.com/mittwald/kubernetes-secret-generator) -->
 
+<!-- - [OpenEBS](https://openebs.io/) with the [Local PV](https://openebs.io/docs/concepts/localpv), [Jiva](https://openebs.io/docs/concepts/jiva) and [CStor](https://openebs.io/docs/concepts/cstor) storage engines. -->
+
 ## Admin site
 
 <!-- TODO: make it available at that address again
