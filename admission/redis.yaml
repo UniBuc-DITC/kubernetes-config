@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: admitere-staging-redis
+  namespace: admission-app
+  labels:
+    app: redis
+    instance: staging
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: redis
+      instance: staging
+  template:
+    metadata:
+      labels:
+        app: redis
+        instance: staging
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.2
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: redis-data
+              mountPath: /data
+          # Run Redis with persistence enabled, for recovery purposes
+          command: ["redis-server"]
+          args: ["--appendonly", "yes"]
+  volumeClaimTemplates:
+    - metadata:
+        name: redis-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: "longhorn-sinaia"
+        resources:
+          requests:
+            storage: 1Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admitere-staging-redis
+  namespace: admission-app
+spec:
+  ports:
+    - name: tcp
+      port: 6379
+  selector:
+    app: redis
+    instance: staging

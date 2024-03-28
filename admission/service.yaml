@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: admitere-staging
+  namespace: admission-app
+spec:
+  ports:
+    - name: http
+      port: 3000
+  selector:
+    app: admission
+    instance: staging

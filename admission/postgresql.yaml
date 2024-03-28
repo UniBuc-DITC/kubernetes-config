@@ -1,0 +1,20 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: admission-app-db
+  namespace: admission-app
+spec:
+  teamId: "acid"
+  volume:
+    size: 1Gi
+    storageClass: longhorn-sinaia
+  numberOfInstances: 3
+  users:
+    zalando: # database owner
+      - superuser
+      - createdb
+    admitere_staging: []
+  databases:
+    admitere_staging: admitere_staging
+  postgresql:
+    version: "16"

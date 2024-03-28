@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: admission-app-ingress
+  namespace: admission-app
+  annotations:
+    nginx.ingress.kubernetes.io/limit-rps: "10"
+    nginx.ingress.kubernetes.io/limit-burst-multiplier: "5"
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+spec:
+  ingressClassName: nginx-sinaia
+  tls:
+    - hosts:
+        - sinaia1.kubernetes.unibuc.ro
+      secretName: admitere-staging-tls
+  rules:
+    - host: "sinaia1.kubernetes.unibuc.ro"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: admitere-staging
+                port:
+                  name: http

@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admission-staging
+  namespace: admission-app
+  labels:
+    app: admission
+    instance: staging
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: admission
+      instance: staging
+  template:
+    metadata:
+      labels:
+        app: admission
+        instance: staging
+    spec:
+      imagePullSecrets:
+        - name: admission-docker-registry-pull-secret
+      containers:
+        - name: admission-app
+          image: registry.gitlab.com/unibuc/directia-itc/admission-app:main
+          ports:
+            - containerPort: 3000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          env:
+            - name: RAILS_SERVE_STATIC_FILES
+              value: "true"
+            - name: MAILER_DEFAULT_URL
+              value: admitere-staging.unibuc.ro
+            - name: DATABASE_URL
+              value: postgresql://admission-app-db:5432/admitere_staging
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: admitere-staging.admission-app-db.credentials.postgresql.acid.zalan.do
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: admitere-staging.admission-app-db.credentials.postgresql.acid.zalan.do
+                  key: password
+            - name: REDIS_URL
+              value: redis://admitere-staging-redis:6379
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: admitere-staging.secret-key-base
+                  key: key
+            - name: ADMIN_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: admitere-staging.admin-credentials
+                  key: email
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: admitere-staging.admin-credentials
+                  key: password
