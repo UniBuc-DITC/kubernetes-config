@@ -32,7 +32,7 @@ You should install the tools below if you plan to manage/work with K8s.
 - [NGINX Ingress Controller](https://github.com/kubernetes/ingress-nginx)
 - [cert-manager](https://cert-manager.io/) for automatic TLS certificate management
 <!-- - [Kubernetes secret generator](https://github.com/mittwald/kubernetes-secret-generator) -->
-
+- [Longhorn](https://longhorn.io/) for distributed block storage
 <!-- - [OpenEBS](https://openebs.io/) with the [Local PV](https://openebs.io/docs/concepts/localpv), [Jiva](https://openebs.io/docs/concepts/jiva) and [CStor](https://openebs.io/docs/concepts/cstor) storage engines. -->
 
 ## Admin site
